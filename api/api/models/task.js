@@ -6,7 +6,8 @@ const mongoose = require('mongoose')
 const taskSchema = mongoose.Schema({
     name: { type: String, required: true },
     body: { type: String, default: '' },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    isCompleted: { type: Boolean, default: false }
 
 
 })

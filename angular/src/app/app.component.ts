@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,8 @@ import { NavComponent } from './nav/nav.component';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    ReactiveFormsModule,
+    NgToastModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

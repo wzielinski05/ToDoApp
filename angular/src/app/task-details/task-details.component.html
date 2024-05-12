@@ -1,0 +1,42 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
+    <div class="space-y-12">
+        <div class="border-b border-gray-900/10 pb-12">
+
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="sm:col-span-4">
+                    <div class="block text-sm font-medium leading-6 text-gray-900">Nazwa
+                        zadania</div>
+                    <div class="mt-2">
+                        {{task.name}}
+                    </div>
+                </div>
+
+                <div class="col-span-full">
+                    <div class="block text-sm font-medium leading-6 text-gray-900">Treść</div>
+                    <div class="mt-2">
+                        {{task.body}}
+
+
+                    </div>
+                </div>
+                <div class="col-span-full">
+                    <div class="block text-sm font-medium leading-6 text-gray-900">Skończone</div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" [(ngModel)]="isChecked" class="sr-only peer"
+                            (change)="completedChange(isChecked)">
+                        <div
+                            class="relative w-9 h-5 bg-gray-200   peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+        <a routerLink="/list" type="button" class="text-sm font-semibold leading-6 text-gray-900">Anuluj</a>
+        <a [routerLink]=" '/task/edit/'+task._id"
+            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edytuj</a>
+    </div>
+</div>

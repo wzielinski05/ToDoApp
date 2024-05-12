@@ -1,19 +1,22 @@
-<li class="flex justify-between gap-x-6 p-5 border rounded-3xl ">
-    <div class="flex min-w-0 gap-x-4">
-        <p>{{title}} </p>
+<li class="flex justify-between gap-x-6 px-2 my-2 border rounded-3xl ">
+    <div class="flex min-w-0 gap-x-4 p-5">
+        <a class="cursor-pointer hover:underline" [routerLink]=" '/task/'+task._id">{{task.name}} </a>
     </div>
     <div class="flex gap-x-4">
-        <button type="button">
-            <ng-icon name="featherCircle    "></ng-icon>
+        <button type="button" (click)="changeStatus()">
+            @if (task.isCompleted) {
+            <ng-icon size="1.5rem" name="featherCheckCircle"></ng-icon>
+            }
+            @else {
+            <ng-icon size="1.5rem" name="featherCircle"></ng-icon>
+            }
         </button>
-        <button type="button">
-            <ng-icon name="featherEdit"></ng-icon>
+        <button type="button" [routerLink]=" '/task/edit/'+task._id">
+            <ng-icon size="1.5rem" name="featherEdit"></ng-icon>
         </button>
-        <div class="">
 
-        </div>
-        <button type="button">
-            <ng-icon name="featherTrash2 "></ng-icon>
+        <button type="button" (click)="deleteTask()">
+            <ng-icon size="1.5rem" name="featherTrash2 "></ng-icon>
         </button>
     </div>
 </li>

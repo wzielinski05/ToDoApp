@@ -1,9 +1,37 @@
 <div class="container mx-auto p-10">
+
+    <a routerLink="/create"
+        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        Stwórz zadanie
+    </a>
+
+
+    @if (!tasksCompleted.length && !tasksUncompleted.length) {
+
+    <div class="text-center">
+        <h2 class="text-xl">
+            Nie masz żadnych zadań
+        </h2>
+
+    </div>
+    }
+    @else {
+
     <h3 class="text-center text-2xl font-bold py-5">Do zrobienia</h3>
     <ul role="list" class="divide-y divide-gray-100 ">
-        <app-task-list-row title="Big work"></app-task-list-row>
+        @for (task of tasksCompleted; track $index) {
+        <app-task-list-row [task]="task" (refresh)="onRefresh()"></app-task-list-row>
+        }
     </ul>
     <h3 class="text-center text-2xl font-bold py-5">Skończone</h3>
-    
+    <ul role="list" class="divide-y divide-gray-100 ">
+        @for (task of tasksUncompleted; track $index) {
+        <app-task-list-row [task]="task" (refresh)="onRefresh()"></app-task-list-row>
+        }
+    </ul>
+
+    }
+
+
 
 </div>

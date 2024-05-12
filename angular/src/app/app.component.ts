@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
@@ -16,7 +20,7 @@ import { NgToastModule } from 'ng-angular-popup';
     RouterLink,
     RouterLinkActive,
     ReactiveFormsModule,
-    NgToastModule
+    NgToastModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

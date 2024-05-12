@@ -9,11 +9,18 @@
         </div>
 
         <div class="flex gap-x-12">
-            <app-nav-link href="login">Hello</app-nav-link>
             <app-nav-link href="list">Lista zadań</app-nav-link>
         </div>
-        <div class="flex flex-1 justify-end">
-            <app-nav-link href="login">Log in <span aria-hidden="true">&rarr;</span></app-nav-link>
+        <div class="flex flex-1 justify-end space-x-4">
+            @if (localStorage.getItem('token')) {
+            <button (click)="signout()"
+                class="text-sm font-semibold mr-3 text-gray-900 transition ease-in-out  duration-300 hover:text-blue-600">Wyloguj
+                się </button>
+            }
+            @else {
+            <app-nav-link href="login">Zaloguj się </app-nav-link>
+            <app-nav-link href="register">Zarejestruj się </app-nav-link>
+            }
         </div>
     </nav>
 

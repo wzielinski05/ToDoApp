@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavLinkComponent } from '../nav/nav-link/nav-link.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgToastModule, NgToastService } from 'ng-angular-popup';
-import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  constructor(private toast: NgToastService) {}
+  constructor(private toast: NgToastService, private router: Router) {}
   email = new FormControl('');
   password = new FormControl('');
   apiUrl = 'http://localhost:3000/user/signup';
@@ -38,10 +38,11 @@ export class RegisterComponent {
         console.log(result);
         if (result.status == 201) {
           this.toast.success({
-            detail: 'Konto stworzone',
+            detail: 'Konto utworzone',
             summary: 'Zaloguj się',
             duration: 5000,
           });
+          this.router.navigate(['/login']);
         } else {
           this.toast.error({
             detail: 'Błąd',

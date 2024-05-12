@@ -8,6 +8,8 @@ Simple to do app
 
 **Server:** Node, Express, MongoDB, JWT
 
+  Required: node.js, mongoDB
+
 ## Run Locally
 
 Clone the project

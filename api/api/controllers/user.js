@@ -20,14 +20,12 @@ exports.login = (req, res, next) => {
                     })
                 }
                 if (result) {
-                    const token = jwt.sign({
-                        email: user.email,
-                        userId: user.id,
-                    },
-                        process.env.JWT_KEY,
+                    const token = jwt.sign(
                         {
-                            expiresIn: "1h"
-                        }
+                            email: user.email,
+                            userId: user.id,
+                        },
+                        process.env.JWT_KEY,
 
                     )
                     return res.status(200).json({

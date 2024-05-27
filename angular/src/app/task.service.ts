@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import Itask from './Itask';
-import { LocalStorageService } from './local-storage.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 
@@ -8,18 +7,14 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class TaskService {
-  constructor(
-    private toast: NgToastService,
-    private localStorage: LocalStorageService,
-    private router: Router
-  ) {}
+  constructor(private toast: NgToastService, private router: Router) {}
 
   private apiUrl = 'http://localhost:3000/tasks';
 
   private headersList = {
     'Content-Type': 'application/json',
     Accept: '*/*',
-    Authorization: `Bearer ${this.localStorage.getItem('token')}`,
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   edit(id: string, params: Itask, backToList?: boolean): Promise<any> {
     return fetch(`${this.apiUrl}/${id}`, {

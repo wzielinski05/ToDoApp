@@ -1,7 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { LocalStorageService } from '../local-storage.service';
 import Itask from '../Itask';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../task.service';
@@ -17,7 +16,6 @@ import { UserService } from '../user.service';
 export class TaskDetailsComponent {
   constructor(
     private route: ActivatedRoute,
-    private localStorage: LocalStorageService,
     private taskService: TaskService,
     private userService: UserService,
     private router: Router
@@ -29,18 +27,21 @@ export class TaskDetailsComponent {
         method: 'GET',
         headers: this.headersList,
       }).then((result) => {
-        result.json().then((json) => {
-          this.task = json.task;
-          this.isChecked = this.task.isCompleted ?? false;
-          console.log(json);
-        });
+        if (result.status == 404) {
+          router.navigate(['list']);
+        } else {
+          result.json().then((json) => {
+            this.task = json.task;
+            this.isChecked = this.task.isCompleted ?? false;
+          });
+        }
       });
     }
   }
   headersList = {
     'Content-Type': 'application/json',
     Accept: '*/*',
-    Authorization: `Bearer ${this.localStorage.getItem('token')}`,
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   id = this.route.snapshot.params['id'];
   apiUrl = 'http://localhost:3000/tasks';

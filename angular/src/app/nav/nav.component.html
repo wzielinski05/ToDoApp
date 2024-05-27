@@ -12,7 +12,10 @@
             <app-nav-link href="list">Lista zadań</app-nav-link>
         </div>
         <div class="flex flex-1 justify-end space-x-4">
+
             @if (localStorage.getItem('token')) {
+            <p class="text-sm font-semibold text-gray-900 ">{{localStorage.getItem('username')}}</p>
+            <span class="text-sm font-semibold mr-3 text-gray-900 ">|</span>
             <button (click)="signout()"
                 class="text-sm font-semibold mr-3 text-gray-900 transition ease-in-out  duration-300 hover:text-blue-600">Wyloguj
                 się </button>

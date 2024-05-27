@@ -32,7 +32,7 @@ exports.getOne = (req, res, next) => {
     else {
         Task.findOne({ _id: req.params.taskId, user: req.userData.userId })
             .then(doc => {
-                if (doc) {
+                if (doc && doc != null) {
                     res.status(200).json({
                         task: doc,
                         request: {
@@ -96,7 +96,6 @@ exports.delete = (req, res, next) => {
     else {
         Task.deleteOne({ _id: id, user: req.userData.userId })
             .then(result => {
-                console.log(result);
                 if (result.deletedCount) {
                     res.status(200).json({
                         message: 'Task deleted',

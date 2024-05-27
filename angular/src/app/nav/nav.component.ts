@@ -3,7 +3,6 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherLogIn } from '@ng-icons/feather-icons';
 import { NavLinkComponent } from './nav-link/nav-link.component';
 import { RouterLink } from '@angular/router';
-import { LocalStorageService } from '../local-storage.service';
 import { UserService } from '../user.service';
 @Component({
   selector: 'app-nav',
@@ -15,9 +14,10 @@ import { UserService } from '../user.service';
 })
 export class NavComponent {
   constructor(
-    public localStorage: LocalStorageService,
     private userService: UserService
   ) {}
+
+  localStorage = localStorage
 
 
   signout() {

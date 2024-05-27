@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
-import { LocalStorageService } from '../local-storage.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
@@ -15,7 +14,6 @@ import { UserService } from '../user.service';
 export class CreateTaskComponent {
   constructor(
     private toast: NgToastService,
-    private localStorage: LocalStorageService,
     private router: Router,
     private userService: UserService
   ) {
@@ -37,7 +35,7 @@ export class CreateTaskComponent {
     const headersList = {
       'Content-Type': 'application/json',
       Accept: '*/*',
-      Authorization: `Bearer ${this.localStorage.getItem('token')}`,
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     };
 
     fetch(this.apiUrl, {

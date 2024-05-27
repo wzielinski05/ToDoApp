@@ -27,7 +27,6 @@ export class RegisterComponent {
       'Content-Type': 'application/json',
       Accept: '*/*',
     };
-    console.log(this.email);
 
     fetch(this.apiUrl, {
       method: 'POST',
@@ -35,7 +34,6 @@ export class RegisterComponent {
       headers: headersList,
     })
       .then((result) => {
-        console.log(result);
         if (result.status == 201) {
           this.toast.success({
             detail: 'Konto utworzone',
@@ -52,7 +50,6 @@ export class RegisterComponent {
         }
       })
       .catch((err) => {
-        console.log(err);
 
         this.toast.error({
           detail: 'Błąd',

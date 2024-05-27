@@ -1,6 +1,5 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { TaskListRowComponent } from './task-list-row/task-list-row.component';
-import { LocalStorageService } from '../local-storage.service';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -13,7 +12,6 @@ import { UserService } from '../user.service';
 })
 export class TaskListComponent {
   constructor(
-    public localStorage: LocalStorageService,
     private userService: UserService,
     private router: Router
   ) {
@@ -40,7 +38,7 @@ export class TaskListComponent {
   headersList = {
     'Content-Type': 'application/json',
     Accept: '*/*',
-    Authorization: `Bearer ${this.localStorage.getItem('token')}`,
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
 
   tasksUncompleted = [];
@@ -52,7 +50,6 @@ export class TaskListComponent {
       headers: this.headersList,
     }).then((result) => {
       result.json().then((json) => {
-        console.log(json);
 
         this.tasksCompleted = json.tasks.filter(
           (task: any) => !task.isCompleted

@@ -1,7 +1,7 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { TaskListRowComponent } from './task-list-row/task-list-row.component';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-task-list',
@@ -11,10 +11,7 @@ import { UserService } from '../user.service';
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) {
+  constructor(private userService: UserService, private router: Router) {
     if (!this.userService.isLogin()) {
       this.router.navigate(['']);
     } else {
@@ -50,7 +47,6 @@ export class TaskListComponent {
       headers: this.headersList,
     }).then((result) => {
       result.json().then((json) => {
-
         this.tasksCompleted = json.tasks.filter(
           (task: any) => !task.isCompleted
         );

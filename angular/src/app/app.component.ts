@@ -1,11 +1,7 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
-} from '@angular/router';
-import { NavComponent } from './nav/nav.component';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NavComponent } from './components/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
 

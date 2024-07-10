@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Itask from './Itask';
+import Itask from '../interfaces/Itask';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 

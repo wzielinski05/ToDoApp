@@ -1,10 +1,10 @@
 import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import Itask from '../Itask';
+import Itask from '../../interfaces/Itask';
 import { FormsModule } from '@angular/forms';
-import { TaskService } from '../task.service';
-import { UserService } from '../user.service';
+import { TaskService } from '../../services/task.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-task-details',

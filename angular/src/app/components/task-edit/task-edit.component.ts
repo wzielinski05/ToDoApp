@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { TaskService } from '../task.service';
-import Itask from '../Itask';
+import { TaskService } from '../../services/task.service';
+import Itask from '../../interfaces/Itask';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-task-edit',

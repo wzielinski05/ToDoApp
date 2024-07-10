@@ -6,9 +6,9 @@ import {
   featherEdit,
   featherTrash2,
 } from '@ng-icons/feather-icons';
-import Itask from '../../Itask';
+import Itask from '../../../interfaces/Itask';
 import { Router, RouterLink } from '@angular/router';
-import { TaskService } from '../../task.service';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'app-task-list-row',

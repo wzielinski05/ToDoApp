@@ -3,7 +3,7 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherLogIn } from '@ng-icons/feather-icons';
 import { NavLinkComponent } from './nav-link/nav-link.component';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-nav',
   standalone: true,
@@ -13,12 +13,9 @@ import { UserService } from '../user.service';
   styleUrl: './nav.component.css',
 })
 export class NavComponent {
-  constructor(
-    private userService: UserService
-  ) {}
+  constructor(private userService: UserService) {}
 
-  localStorage = localStorage
-
+  localStorage = localStorage;
 
   signout() {
     this.userService.signout();

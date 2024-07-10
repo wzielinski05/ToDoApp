@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavLinkComponent } from '../nav/nav-link/nav-link.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',

@@ -6,9 +6,9 @@ Simple to do app
 
 **Client:** Angular, TailwindCSS
 
-**Server:** Node, Express, MongoDB, JWT
+**Server:** Node, Express, MongoDB
 
-  Required: node.js, mongoDB
+  Required: node.js, mongoDB@6.0 or newer
 
 ## Run Locally
 

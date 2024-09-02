@@ -2,6 +2,7 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { TaskListRowComponent } from './task-list-row/task-list-row.component';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-task-list',
@@ -11,9 +12,16 @@ import { UserService } from '../../services/user.service';
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toast: NgToastService
+  ) {
     if (!this.userService.isLogin()) {
       this.router.navigate(['']);
+      this.toast.info({
+        detail: 'Nie jesteś zalogowany'
+      })
     } else {
       fetch(this.apiUrl, {
         method: 'GET',

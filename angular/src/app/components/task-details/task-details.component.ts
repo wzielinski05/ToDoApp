@@ -5,6 +5,7 @@ import Itask from '../../interfaces/Itask';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { UserService } from '../../services/user.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-task-details',
@@ -18,7 +19,8 @@ export class TaskDetailsComponent {
     private route: ActivatedRoute,
     private taskService: TaskService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toast: NgToastService
   ) {
     if (!this.userService.isLogin()) {
       this.router.navigate(['']);
@@ -29,6 +31,9 @@ export class TaskDetailsComponent {
       }).then((result) => {
         if (result.status == 404) {
           router.navigate(['list']);
+          toast.error({
+            detail: 'Nie znaleziono zadania',
+          });
         } else {
           result.json().then((json) => {
             this.task = json.task;
